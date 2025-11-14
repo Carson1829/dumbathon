@@ -1,0 +1,287 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: radial-gradient(circle at top, #111827, #030712);
+  color: var(--foreground);
+  font-family: var(--font-sans), "SF Pro Display", "Inter", sans-serif;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.ticker-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.15);
+  padding: 0.4rem 1rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  overflow: hidden;
+}
+
+.ticker-text {
+  flex: 1;
+  animation: ticker 14s linear infinite;
+  white-space: nowrap;
+}
+
+.ticker-loop {
+  color: rgba(248, 250, 252, 0.6);
+}
+
+.fake-progress {
+  position: relative;
+  overflow: hidden;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.35rem 0.8rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.fake-progress-bar {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(16, 185, 129, 0.3), rgba(255, 0, 161, 0.3));
+  transition: width 0.4s ease;
+  z-index: -1;
+}
+
+.annoying-loop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.5rem;
+}
+
+.loop-card {
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 0.8rem;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
+}
+
+.chat-bubble {
+  position: relative;
+  max-width: 36rem;
+  border-radius: 1.25rem;
+  padding: 1rem;
+  line-height: 1.6;
+  backdrop-filter: blur(6px);
+}
+
+.chat-bubble-bad {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.chat-bubble-user {
+  margin-left: auto;
+  background: rgba(16, 185, 129, 0.85);
+  color: #031006;
+  border: 1px solid rgba(16, 185, 129, 0.6);
+}
+
+.fix-button-chaos {
+  margin-top: 0.75rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(127, 29, 29, 0.5);
+  color: rgba(255, 255, 255, 0.85);
+  animation: wiggle 1.6s ease-in-out infinite;
+}
+
+.broken-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.broken-toggle input {
+  accent-color: #34d399;
+}
+
+.mic-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+  font-size: 1.1rem;
+}
+
+.mic-button-on {
+  background: rgba(248, 113, 113, 0.8);
+  border-color: rgba(248, 113, 113, 0.8);
+  color: #fff;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.mic-button-off {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.chaotic-textarea {
+  width: 100%;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.9rem 1.1rem;
+  color: #fff;
+  resize: none;
+  min-height: 90px;
+  outline: none;
+  transition: border 0.2s ease, transform 0.2s ease;
+}
+
+.chaotic-textarea:focus {
+  border-color: rgba(16, 185, 129, 0.8);
+  transform: translateY(-2px);
+}
+
+.send-button {
+  position: relative;
+  height: 3.5rem;
+  border-radius: 1.5rem;
+  padding: 0 2rem;
+  font-weight: 600;
+  background: linear-gradient(120deg, #34d399, #f472b6);
+  color: #031015;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  box-shadow: 0 10px 30px rgba(52, 211, 153, 0.4);
+}
+
+.send-button:disabled {
+  filter: grayscale(0.7);
+  cursor: not-allowed;
+}
+
+.glitchy-text {
+  animation: glitch 0.9s steps(2, end) infinite;
+}
+
+.modal-chaos {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 2rem 1rem;
+  pointer-events: none;
+}
+
+.modal-window {
+  pointer-events: auto;
+  background: rgba(24, 24, 27, 0.95);
+  border: 1px solid rgba(248, 113, 113, 0.5);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  animation: pop 0.6s ease;
+}
+
+.panic-button {
+  margin-top: 1rem;
+  width: 100%;
+  border-radius: 999px;
+  padding: 0.7rem;
+  background: rgba(248, 113, 113, 0.8);
+  border: 1px solid rgba(248, 113, 113, 0.6);
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(20%);
+  }
+  100% {
+    transform: translateX(-80%);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(-2deg);
+  }
+  50% {
+    transform: translate(3px, -3px) rotate(3deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 2px 0 rgba(255, 0, 128, 0.5);
+  }
+  50% {
+    text-shadow: -2px 0 rgba(0, 255, 213, 0.5);
+  }
+  100% {
+    text-shadow: 2px 0 rgba(255, 0, 128, 0.5);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: translateY(40px) scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
