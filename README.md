@@ -1,6 +1,8 @@
 # dumbathon
 
-Run "streamlit run app.py"
+Run "streamlit run app_old.py" --older version
+
+Run "streamlit run app_new.py" --new version with Victoria's prompts.
 
 Password: "jeffery flanigan"
 
